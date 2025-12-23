@@ -4,6 +4,12 @@
 
 [English](README.md) | 日本語
 
+## 出力例
+
+生成される HTML 差分レポートの表示例：
+
+[![DB Before After Output](https://github.com/iwazzer/db_before_after/raw/main/docs/images/db_diff_output.gif)](https://github.com/iwazzer/db_before_after/blob/main/docs/images/db_diff_output.gif)
+
 ## 特徴
 
 - 📊 **ビジュアル差分レポート**: データベース変更をサイドバイサイドでHTML比較表示
@@ -103,12 +109,6 @@ export DB_ENCODING=utf8
    # クリップボードの内容を貼り付けるだけ
    open /tmp/01HG9TSFDH83E4YTZQX0PVJ5Q8_db_diff.html
    ```
-
-## 出力例
-
-生成される HTML 差分レポートの表示例：
-
-[![DB Before After Output](https://github.com/iwazzer/db_before_after/raw/main/docs/images/db_diff_output.gif)](https://github.com/iwazzer/db_before_after/blob/main/docs/images/db_diff_output.gif)
 
 ## 出力形式
 

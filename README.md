@@ -4,6 +4,12 @@ A Rust implementation of [db_before_after](https://github.com/iwazzer/db_before_
 
 English | [日本語](README_ja.md)
 
+## Example Output
+
+Here's what the generated HTML diff report looks like:
+
+[![DB Before After Output](https://github.com/iwazzer/db_before_after/raw/main/docs/images/db_diff_output.gif)](https://github.com/iwazzer/db_before_after/blob/main/docs/images/db_diff_output.gif)
+
 ## Features
 
 - 📊 **Visual Diff Reports**: Side-by-side HTML comparison of database changes
@@ -103,12 +109,6 @@ export DB_ENCODING=utf8
    # Just paste the clipboard content
    open /tmp/01HG9TSFDH83E4YTZQX0PVJ5Q8_db_diff.html
    ```
-
-## Example Output
-
-Here's what the generated HTML diff report looks like:
-
-[![DB Before After Output](https://github.com/iwazzer/db_before_after/raw/main/docs/images/db_diff_output.gif)](https://github.com/iwazzer/db_before_after/blob/main/docs/images/db_diff_output.gif)
 
 ## Output Format
 
