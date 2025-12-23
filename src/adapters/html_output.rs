@@ -421,10 +421,10 @@ impl<W: Write> OutputAdapter for HtmlOutputAdapter<W> {
             match change.tag() {
                 ChangeTag::Delete => {
                     left_html.push_str(&format!("<li class=\"del\"><del>{}</del></li>", line));
-                    right_html.push_str(&format!("<li class=\"del\"><del></del></li>"));
+                    right_html.push_str("<li class=\"del\"><del></del></li>");
                 }
                 ChangeTag::Insert => {
-                    left_html.push_str(&format!("<li class=\"ins\"><ins></ins></li>"));
+                    left_html.push_str("<li class=\"ins\"><ins></ins></li>");
                     right_html.push_str(&format!("<li class=\"ins\"><ins>{}</ins></li>", line));
                 }
                 ChangeTag::Equal => {

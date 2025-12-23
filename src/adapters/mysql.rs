@@ -117,6 +117,29 @@ impl DatabaseAdapter for MySqlAdapter {
         Ok(())
     }
 
+    async fn read_database(&self) -> Result<DatabaseSnapshot> {
+        let pool = self.pool()?;
+        let tables = self.list_tables().await?;
+
+        let mut snapshot = HashMap::new();
+
+        for table_name in tables {
+            // Query all data from the table
+            let query = format!("SELECT * FROM `{}`", table_name);
+            let rows = sqlx::query(&query).fetch_all(pool).await?;
+
+            let mut table_data = Vec::new();
+            for row in rows.iter() {
+                let row_map = Self::row_to_hashmap(row)?;
+                table_data.push(row_map);
+            }
+
+            snapshot.insert(table_name, table_data);
+        }
+
+        Ok(snapshot)
+    }
+
     async fn list_tables(&self) -> Result<Vec<String>> {
         let pool = self.pool()?;
         let query = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = ?";
@@ -140,28 +163,5 @@ impl DatabaseAdapter for MySqlAdapter {
         }
 
         Ok(table_names)
-    }
-
-    async fn read_database(&self) -> Result<DatabaseSnapshot> {
-        let pool = self.pool()?;
-        let tables = self.list_tables().await?;
-
-        let mut snapshot = HashMap::new();
-
-        for table_name in tables {
-            // Query all data from the table
-            let query = format!("SELECT * FROM `{}`", table_name);
-            let rows = sqlx::query(&query).fetch_all(pool).await?;
-
-            let mut table_data = Vec::new();
-            for row in rows.iter() {
-                let row_map = Self::row_to_hashmap(row)?;
-                table_data.push(row_map);
-            }
-
-            snapshot.insert(table_name, table_data);
-        }
-
-        Ok(snapshot)
     }
 }
